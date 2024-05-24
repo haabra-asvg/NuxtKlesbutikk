@@ -1,0 +1,75 @@
+.singlePageTable {
+  width: inherit;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+
+  thead {
+    background-color: #70faff;
+    color: #000;
+    text-align: left;
+  }
+
+  th, td {
+    padding: 10px 10px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  tbody tr td {
+    padding: 10px 0;
+  }
+
+  tbody tr td:first-child {
+    padding-left: 20px;
+  }
+
+  .btnTD {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .btnRediger {
+    background-color: rgb(255, 219, 37);
+    color: black;
+    padding: 7px 14px;
+    border: none;
+    border-radius: 4px;
+    transition: all 0.25s ease-in-out;
+    cursor: pointer;
+  }
+
+  .btnSlett {
+    background-color: rgb(255, 55, 55);
+    color: white;
+    padding: 7px 14px;
+    border: none;
+    border-radius: 4px;
+    transition: all 0.25s ease-in-out;
+    cursor: pointer;
+  }
+
+  .btnRediger:hover, .btnSlett:hover {
+    transform: scale(1.1);
+  }
+
+}
+
+.striped {
+  tbody tr:nth-child(odd) {
+    background-color: #f0f0f0;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #fff;
+  }
+}
+
+.small {
+  width: 70%;
+}

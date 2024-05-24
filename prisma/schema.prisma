@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Users {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Roles     Roles?   @relation(fields: [rolesId], references: [id])
+  rolesId   Int?
+  token     String   @unique @default(cuid())
+}
+
+model Roles {
+  id                 Int     @id @default(autoincrement())
+  name               String
+  employee           Boolean
+  createEditProducts Boolean
+  editStock          Boolean
+  administrator      Boolean
+  Users              Users[]
+}
+
+model Products {
+  id         Int      @id @default(autoincrement())
+  name       String
+  price      Float
+  color      Color[]
+  categoryId Int
+  Category   Category @relation(fields: [categoryId], references: [id])
+}
+
+model Color {
+  id         Int       @id @default(autoincrement())
+  Products   Products? @relation(fields: [productsId], references: [id])
+  productsId Int?
+  size       String
+  stock      Int
+}
+
+model Category {
+  id       Int        @id @default(autoincrement())
+  name     String     @unique
+  Products Products[]
+}
